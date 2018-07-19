@@ -2,6 +2,7 @@ $(startUp);
 
 const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 let searchTerm;
+let nextPageToken;
 
 function startUp() {
   handleSearchForm();
@@ -19,8 +20,8 @@ function handleSearchForm() {
 }
 
 function handleMoreButton() {
-  $('.js-more-button').on('click', '.js-more-button button', function() {
-
+  $('.js-more-button').on('click', 'button', function() {
+    moreDataFromApi(searchTerm);
   });
 }
 
@@ -36,7 +37,35 @@ function getDataFromApi(searchTerm) {
   $.getJSON(YOUTUBE_SEARCH_URL, query, renderSearchResults);
 }
 
+function moreDataFromApi(searchTerm) {
+  let query = {
+    key: 'AIzaSyCyzP05Kp56tTxNYzK_2zyey4Q2LwtkviY',
+    q: searchTerm,
+    part: 'snippet',
+    type: 'video',
+    maxResults: 8,
+    pageToken: nextPageToken,
+  };
+
+  $.getJSON(YOUTUBE_SEARCH_URL, query, renderMoreResults);
+}
+
 function renderSearchResults(data) {
+  nextPageToken = data.nextPageToken;
+  let html = buildHtmlFromData(data);
+
+  $('.js-search-results').html(html);
+  $('.js-more-button').html('<button>More</button>')
+}
+
+function renderMoreResults(data) {
+  nextPageToken = data.nextPageToken;
+  let html = buildHtmlFromData(data);
+
+  $('.js-search-results').append(html);
+}
+
+function buildHtmlFromData(data) {
   let items = data.items.map(function(item) {
     return {
       url: item.snippet.thumbnails.medium.url,
@@ -54,6 +83,5 @@ function renderSearchResults(data) {
     `
   });
 
-  $('.js-search-results').html(html);
-  $('.js-more-button').html('<button>More</button>')
+  return html;
 }
