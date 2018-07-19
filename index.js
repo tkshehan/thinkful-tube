@@ -1,22 +1,30 @@
 $(startUp);
 
+const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
+let searchTerm;
+
 function startUp() {
   handleSearchForm();
+  handleMoreButton();
 }
 
 function handleSearchForm() {
   $('.js-search-form').submit(function(event) {
     event.preventDefault();
-    let searchTerm = $('#youtube-search').val();
+    searchTerm = $('#youtube-search').val();
     $('#youtube-search').val('');
 
     getDataFromApi(searchTerm);
   });
 }
 
-function getDataFromApi(searchTerm) {
-  const YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
+function handleMoreButton() {
+  $('.js-more-button').on('click', '.js-more-button button', function() {
 
+  });
+}
+
+function getDataFromApi(searchTerm) {
   let query = {
     key: 'AIzaSyCyzP05Kp56tTxNYzK_2zyey4Q2LwtkviY',
     q: searchTerm,
@@ -47,4 +55,5 @@ function renderSearchResults(data) {
   });
 
   $('.js-search-results').html(html);
+  $('.js-more-button').html('<button>More</button>')
 }
