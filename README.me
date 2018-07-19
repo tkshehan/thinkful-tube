@@ -1,0 +1,26 @@
+The endpoint is "https://www.googleapis.com/youtube/v3/search"
+
+You will need to pass the following in the params object:
+
+
+    part: 'snippet'
+    key: (your API key as a string)
+    q: (your search term as a string)
+
+For this project, you will build a page with a simple search form that allows
+ the user to search YouTube videos. Based on the search results the page will
+  display thumbnail images of videos that match the search.
+
+
+  App Requirements
+
+    Accept a user search term
+    Get JSON from the YouTube API based on the user search term
+    Display the thumbnail image of the returned videos
+
+Optional Advanced functionality challenges
+
+    Make the images clickable, leading the user to the YouTube video, on YouTube
+    Make the images clickable, playing them in a lightbox
+    Show a link for more from the channel that each video came from
+    Show buttons to get more results (using the previous and next page links from the JSON)
