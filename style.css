@@ -44,9 +44,3 @@ img {
 .results::after {
   clear: both;
 }
-
-@media only screen and (min-width: 1000px) {
-  .col-3 {
-    width: 25%;
-  }
-}
