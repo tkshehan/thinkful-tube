@@ -8,7 +8,7 @@ function handleSearchForm() {
   $('.js-search-form').submit(function(event) {
     event.preventDefault();
     let searchTerm = $('#youtube-search').val();
-    $('#youtube-seach').val('');
+    $('#youtube-search').val('');
 
     getDataFromApi(searchTerm);
   });
