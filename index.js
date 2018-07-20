@@ -27,7 +27,7 @@ function handleMoreButton() {
 
 function getDataFromApi(searchTerm) {
   let query = {
-    key: 'AIzaSyCyzP05Kp56tTxNYzK_2zyey4Q2LwtkviY',
+    key: 'AIzaSyB7FPnZtg6Wo-KPKcxgAcoeQ3HJAfp-r7w',
     q: searchTerm,
     part: 'snippet',
     type: 'video',
@@ -39,7 +39,7 @@ function getDataFromApi(searchTerm) {
 
 function moreDataFromApi(searchTerm) {
   let query = {
-    key: 'AIzaSyCyzP05Kp56tTxNYzK_2zyey4Q2LwtkviY',
+    key: 'AIzaSyB7FPnZtg6Wo-KPKcxgAcoeQ3HJAfp-r7w',
     q: searchTerm,
     part: 'snippet',
     type: 'video',
