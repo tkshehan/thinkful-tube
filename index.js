@@ -52,9 +52,13 @@ function moreDataFromApi(searchTerm) {
 
 function renderSearchResults(data) {
   nextPageToken = data.nextPageToken;
+  let totalResults = data.pageInfo.totalResults;
   let html = buildHtmlFromData(data);
 
-  $('.js-search-results').html(html);
+  $('.js-search-results').html(`
+    <div> <h2> Results: ${totalResults} </h2> </div>
+  `);
+  $('.js-search-results').append(html);
   $('.js-more-button').html('<button>More</button>')
 }
 
