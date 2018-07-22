@@ -69,6 +69,7 @@ function buildHtmlFromData(data) {
   let items = data.items.map(function(item) {
     return {
       url: item.snippet.thumbnails.medium.url,
+      title: item.snippet.title,
       id: item.id.videoId,
     }
   });
@@ -77,7 +78,7 @@ function buildHtmlFromData(data) {
     return `
     <div class="col-3">
       <a href="https://www.youtube.com/watch?v=${item.id}">
-        <img src="${item.url}" alt="Youtube Thumbnail">
+        <img src="${item.url}" alt="Youtube Video ${item.title}">
       </a>
     </div>
     `
